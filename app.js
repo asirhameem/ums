@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const exSession = require('express-session');
 const cookieParser = require('cookie-parser');
 const registration = require('./controllers/registration');
-// const home = require('./controller/home');
+const login = require('./controller/login');
 // const logout = require('./controller/logout');
 // const user = require('./controller/user');
 const app = express();
@@ -19,7 +19,7 @@ app.use(exSession({ secret: 'my secret value', saveUninitialized: true, resave: 
 app.use(cookieParser());
 
 app.use('/registration', registration);
-// app.use('/home', home);
+app.use('/login', login);
 // app.use('/logout', logout);
 // app.use('/user', user);
 

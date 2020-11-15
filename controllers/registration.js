@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require.main.require('./models/db');
+const registrationModel = require.main.require('./models/registrationModel');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -7,15 +7,21 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-
-    var sql = "select * from user where username='" + req.body.username + "' and password='" + req.body.password + "'";
-    db.getResults(sql, function(results) {
-        if (results.length > 0) {
-            res.cookie('uname', req.body.username);
-            res.redirect('/home');
-        } else {
+    var user = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        type: "Teacher",
+        dp: "",
+        status: "Inactive"
+    };
+    registrationModel.insert(user, function(status) {
+        if (status) {
             res.redirect('/login');
+        } else {
+            res.redirect('/registration');
         }
+
     });
 })
 
