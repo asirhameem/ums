@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const exSession = require('express-session');
 const cookieParser = require('cookie-parser');
 const registration = require('./controllers/registration');
-const login = require('./controller/login');
+const login = require('./controllers/login');
+const profile = require('./controllers/myProfile');
 // const logout = require('./controller/logout');
 // const user = require('./controller/user');
 const app = express();
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use('/registration', registration);
 app.use('/login', login);
+app.use('/profile', profile);
 // app.use('/logout', logout);
 // app.use('/user', user);
 

@@ -14,7 +14,9 @@ router.post('/', (req, res) => {
     };
     loginModel.validate(user, function(status) {
         if (status) {
-            res.send("<h1> Login Successfull </h1>")
+            //res.send("<h1> Login Successfull </h1>")
+            req.session.email = user.email;
+            res.redirect('/profile');
         } else {
             res.redirect('/login');
         }
