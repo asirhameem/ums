@@ -2,6 +2,8 @@ const express = require('express');
 const profileModel = require.main.require('./models/profileModel');
 const router = express.Router();
 
+
+
 router.get('/', (req, res) => {
     var user = {
         email: req.session.email
@@ -12,19 +14,32 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+
+    let fileName = req.files.dp;
+    let uploadPath = 'assets/uploads/' + fileName.name;
     var user = {
+
         name: req.body.name,
-        email: req.body.email,
         password: req.body.password,
-        type: "Teacher",
-        dp: "",
-        status: "Inactive"
+        dp: uploadPath,
+        email: req.session.email,
+        status: req.body.status,
+        type: req.body.type
+
     };
-    profileModel.insert(user, function(status) {
+    //console.log(user.dp);
+    profileModel.UpdateInfo(user, function(status) {
         if (status) {
-            res.redirect('/login');
+            console.log(fileName);
+            fileName.mv(uploadPath, (err) => {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+            });
+            res.redirect('/profile');
+
         } else {
-            res.redirect('/registration');
+            //res.redirect('/registration');
         }
 
     });

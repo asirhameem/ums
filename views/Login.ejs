@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!--===============================================================================================-->
+    <link href="assets/toastr/js/toastr.min.css" rel="stylesheet">
 
 
 </head>
@@ -42,7 +43,7 @@
                 <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
 
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" id="uname" type="text" name="email" placeholder="Email" onkeyup="EmailValidation">
+                        <input class="input100" id="email" type="text" name="email" placeholder="Email" onkeyup="EmailValidation">
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
 
@@ -69,7 +70,7 @@
     <!--===============================================================================================-->
     <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 
-    <script src="MyScript.js"></script>
+    <!-- <script src="MyScript.js"></script> -->
 
     <!--===============================================================================================-->
     <script src="assets/vendor/animsition/js/animsition.min.js"></script>
@@ -85,6 +86,34 @@
     <script src="assets/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="assets/js/main.js"></script>
+    <!-- ................. -->
+
+    <script src="assets/toastr/js/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            let msg = '<%= msg %>';
+            if (msg != "") {
+                toastr["error"](msg);
+            }
+        })
+    </script>
 
 
 

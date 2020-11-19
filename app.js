@@ -3,12 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const exSession = require('express-session');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 const registration = require('./controllers/registration');
 const login = require('./controllers/login');
 const profile = require('./controllers/myProfile');
 // const logout = require('./controller/logout');
 // const user = require('./controller/user');
 const app = express();
+
 
 //config
 app.set('view engine', 'ejs');
@@ -18,6 +20,11 @@ app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(exSession({ secret: 'my secret value', saveUninitialized: true, resave: false }));
 app.use(cookieParser());
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
+}));
+
 
 app.use('/registration', registration);
 app.use('/login', login);

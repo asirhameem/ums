@@ -1,24 +1,37 @@
 const express = require('express');
 const loginModel = require.main.require('./models/loginModel');
 const router = express.Router();
-
+const { check, validationResult } = require('express-validator');
+var msg = '';
 router.get('/', (req, res) => {
-    res.render('Login');
+    res.render('Login', { msg: msg });
 })
 
-router.post('/', (req, res) => {
+router.post('/', [
+    check('email', 'Invalid Email')
+    .exists()
+    .isLength({ min: 12 }),
+    check('password', 'Invalid Password')
+    .exists()
+    .isLength({ min: 3 })
+], (req, res) => {
 
     var user = {
         email: req.body.email,
         password: req.body.password
     };
+
+
     loginModel.validate(user, function(status) {
         if (status) {
-            //res.send("<h1> Login Successfull </h1>")
+
             req.session.email = user.email;
             res.redirect('/profile');
         } else {
-            res.redirect('/login');
+
+            msg = "Unauthorized";
+            res.render('Login', { msg: msg });
+
         }
     });
 })
