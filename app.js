@@ -7,8 +7,9 @@ const fileUpload = require('express-fileupload');
 const registration = require('./controllers/registration');
 const login = require('./controllers/login');
 const profile = require('./controllers/myProfile');
-// const logout = require('./controller/logout');
-// const user = require('./controller/user');
+const homepage = require('./controllers/homepage');
+const course = require('./controllers/course');
+// const course = require('./controllers/course');
 const app = express();
 
 
@@ -29,7 +30,8 @@ app.use(fileUpload({
 app.use('/registration', registration);
 app.use('/login', login);
 app.use('/profile', profile);
-// app.use('/logout', logout);
+app.use('/home', homepage);
+app.use('/course', course);
 // app.use('/user', user);
 
 //route

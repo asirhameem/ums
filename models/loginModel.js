@@ -11,5 +11,12 @@ module.exports = {
                 callback(false);
             }
         });
+    },
+    getByEmail: function(user, callback) {
+        var sql = "select * from user where email = '" + user.email + "' ";
+        db.getResults(sql, function(results) {
+            callback(results);
+        });
     }
+
 }

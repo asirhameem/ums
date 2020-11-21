@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="assets/myprofile/vendor/jquery/jquery.min.js"></script>
     <!-- <script src="myProfile.js"></script> -->
+    <!-- ============================================================= -->
     <link href="assets/toastr/js/toastr.min.css" rel="stylesheet">
 
     <!-- ========================= -->
@@ -58,9 +59,9 @@
                                         <% dp = user[0].dp %>
                                             <% } %>
 
-                                                <img src="<%= dp %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                                                <img src="<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
                                                 <h6>Upload a photo...</h6>
-                                                <input type="file" name="dp" class="text-center center-block file-upload">
+                                                <input type="file" name="dp" value="" class="text-center center-block file-upload">
                         </div>
 
 
@@ -117,6 +118,45 @@
                                         <h4>Type</h4>
                                     </label>
                                     <input type="text" class="form-control" id="type" value="<%=user[0].type%>" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="type">
+                                        <h4>Department</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="type" value="<%=user[0].department%>" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="type">
+                                        <h4>Designation</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="type" value="<%=user[0].designation%>" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="type">
+                                        <h4>Salary</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="type" value="<%=user[0].salary%>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label for="type">
+                                        <h4>Joining Date</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="type" value="<%=user[0].joindate%>" readonly>
                                 </div>
                             </div>
 
