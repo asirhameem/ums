@@ -11,6 +11,7 @@ const homepage = require('./controllers/homepage');
 const course = require('./controllers/course');
 const content = require('./controllers/content');
 const notice = require('./controllers/notice');
+const logout = require('./controllers/logout');
 // const course = require('./controllers/course');
 
 const app = express();
@@ -37,6 +38,7 @@ app.use('/home', homepage);
 app.use('/course', course);
 app.use('/upload', content);
 app.use('/notice', notice);
+app.use('/logout', logout);
 // app.use('/user', user);
 
 //route

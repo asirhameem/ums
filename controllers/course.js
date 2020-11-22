@@ -4,7 +4,11 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
 var msg = "";
-
+router.get('/', (req, res) => {
+    courseModel.Courses(function(results) {
+        res.render('AllCourses', { courses: results })
+    })
+});
 router.get('/:id', (req, res) => {
     var course = {
         courseid: req.params.id,

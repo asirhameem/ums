@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Porashuna</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/Home/css/heroic-features.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    </nav>
+    <!-- Page Content -->
+    <div class="row">
+        <% for (var course of courses){ %>
+            <div class="col-sm-4">
+
+                <div class="card" style="width: 18rem; height: fixed;">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= course.coursename %>
+                        </h5>
+                        <p class="card-text">
+                            <%= course.coursedescription %>
+                        </p>
+                        <a href="course/<%= course.courseid%>" class="btn btn-primary">Course Details</a>
+                        <!-- <a href="upload/<%=course.courseid%>" class="btn btn-primary">Upload</a>
+                        <a href="notice/<%=course.courseid%>" class="btn btn-primary">Notice</a> -->
+                    </div>
+                </div>
+
+            </div>
+            <% } %>
+    </div>
+
+
+
+    <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+
+    <script src="assets/Home/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#navbar").load("home/navbar");
+    </script>
+    <!-- <script type="text/javascript" src="MyHome.js"></script> -->
+
+
+    <!-- <script type="text/javascript" src="Navbar.js"></script> -->
+
+</body>
+
+</html>

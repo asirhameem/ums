@@ -10,8 +10,14 @@ module.exports = {
         });
     },
     CourseStudents: function(course, callback) {
-            var sql = "SELECT * FROM enroll,user WHERE enroll.studentemail = user.email and user.type = 'Student' and enroll.courseid = '" + course.courseid + "' and enroll.instructorid = '" + course.teacherid + "'";
+        var sql = "SELECT * FROM enroll,user WHERE enroll.studentemail = user.email and user.type = 'Student' and enroll.courseid = '" + course.courseid + "' and enroll.instructorid = '" + course.teacherid + "'";
 
+        db.getResults(sql, function(results) {
+            callback(results);
+        });
+    },
+    Courses: function(callback) {
+            var sql = "select * from course;";
             db.getResults(sql, function(results) {
                 callback(results);
             });

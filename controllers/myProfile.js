@@ -15,36 +15,46 @@ router.get('/', (req, res) => {
     });
 })
 
-router.post('/', (req, res) => {
+router.post('/', [
+    check('name', 'Invalid Name').exists().isLength({ min: 3 }),
+    check('password', 'Invalid Password').exists().isLength({ min: 3 })
+], (req, res) => {
 
-    let fileName = req.files.dp;
-    let uploadPath = 'assets/uploads/' + fileName.name;
-    var user = {
+    var errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log("Invalid Data");
+        console.log(errors);
+        res.redirect(req.get('referer'));
+    } else {
+        let fileName = req.files.dp;
+        let uploadPath = 'assets/uploads/' + fileName.name;
+        var user = {
 
-        name: req.body.name,
-        password: req.body.password,
-        dp: uploadPath,
-        email: req.body.email
+            name: req.body.name,
+            password: req.body.password,
+            dp: uploadPath,
+            email: req.body.email
 
 
-    };
-    console.log(uploadPath);
-    profileModel.UpdateInfo(user, function(status) {
-        if (status) {
-            //console.log(fileName);
-            fileName.mv(uploadPath, (err) => {
-                if (err) {
-                    return res.status(500).send(err);
-                }
-            });
-            res.redirect('/profile');
+        };
+        console.log(uploadPath);
+        profileModel.UpdateInfo(user, function(status) {
+            if (status) {
+                //console.log(fileName);
+                fileName.mv(uploadPath, (err) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                });
+                res.redirect('/profile');
 
-        } else {
-            msg = "Can not Update";
-            res.render('MyProfile', { msg: msg });
-        }
+            } else {
+                msg = "Can not Update";
+                res.render('MyProfile', { msg: msg });
+            }
 
-    });
+        });
+    }
 })
 
 module.exports = router;
