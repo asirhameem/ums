@@ -1,5 +1,6 @@
 const express = require('express');
 const courseModel = require.main.require('./models/courseModel');
+const homeModel = require.main.require('./models/homeModel');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
@@ -7,6 +8,14 @@ var msg = "";
 router.get('/', (req, res) => {
     courseModel.Courses(function(results) {
         res.render('AllCourses', { courses: results })
+    })
+});
+router.get('/mycourse', (req, res) => {
+    var user = {
+        userid: req.session.userid
+    };
+    homeModel.LoadSubjects(user, function(results) {
+        res.render('MyCourses', { courses: results })
     })
 });
 router.get('/:id', (req, res) => {

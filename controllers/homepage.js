@@ -55,4 +55,9 @@ router.get('/navbar', (req, res) => {
 
 })
 
+router.post('/navbar', (req, res) => {
+
+    res.render('navbar');
+
+})
 module.exports = router;

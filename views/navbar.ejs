@@ -10,17 +10,17 @@
       </button>
             <div id="drop" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="/profile">My Profile</a>
-                <a class="dropdown-item" href="/profile">My Courses</a>
+                <a class="dropdown-item" href="/course/mycourse">My Courses</a>
                 <a class="dropdown-item" href="/course">All Courses</a>
                 <a class="dropdown-item" href="#">Ban Student</a>
             </div>
         </div>
     </div>
 
-    <form class="example" action="/action_page.php">
-        <input type="text" placeholder="What do you want to learn?" name="search" style="max-width:40%;width:650px;display:inline-flex">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+
+    <input id="search" type="text" placeholder="Enter Student Credential" name="search" style="max-width:40%;width:650px;display:inline-flex">
+    <button id="btnSearch" type="button"><i class="fa fa-search"></i></button>
+
 
 </ul>
 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -31,3 +31,8 @@
         </li>
     </ul>
 </div>
+<script>
+    $('#btnSearch').click(function(event) {
+        window.location.href = '../search/' + document.getElementById("search").value;
+    });
+</script>

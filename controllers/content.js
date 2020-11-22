@@ -11,7 +11,16 @@ router.get('/:id', (req, res) => {
     };
 
     contentModel.ContentByCourse(course, function(results) {
-        res.render('CourseContent', { contents: results });
+        var arr = [];
+        var arr2 = [];
+        for (var i = 0; i < results.length; i++) {
+            arr = results[i].contentpath.split('/');
+            arr2.push(arr[3]);
+            if (i == results.length - 1) {
+                res.render('CourseContent', { contents: results, fname: arr2 });
+            }
+
+        }
     })
 
     // res.render('Home');

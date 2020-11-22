@@ -86,8 +86,10 @@
                 </tr> -->
             </tbody>
         </table>
-
+        <h3>Download Student List</h3>
+        <button id="export" class="btn btn-danger">Download Excel</button>
         <h1>Enrolled Student List</h1>
+
 
         <table id="StudentList" class="table table-hover table-condensed" border="1">
             <thead>
@@ -120,6 +122,8 @@
 
         </table>
 
+
+
         <!-- <div id="addToCart">
             <button id="addToCart" class="btn btn-warning">Add To Cart</button>
         </div> -->
@@ -134,10 +138,67 @@
     <script src="../assets/CourseDetails/js/jquery.waypoints.min.js"></script>
     <script src="../assets/CourseDetails/js/jquery.countdown.min.js"></script>
     <script src="../assets/CourseDetails/js/main.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <!-- <script type="text/javascript" src="../node_modules/xlsx/dist/xlsx.min.js"></script> -->
+
     <!-- <script src="../assets/CourseDetails.js"></script> -->
     <script>
         $("#navbar").load("../home/navbar");
     </script>
+    <script>
+        var wb = XLSX.utils.table_to_book(document.getElementById('StudentList'), {
+            sheet: "Sheet JS"
+        });
+        var wbout = XLSX.write(wb, {
+            bookType: 'xlsx',
+            bookSST: true,
+            type: 'binary'
+        });
+
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        // var studentList = document.getElementById('courseName').value;
+        $("#export").click(function() {
+            saveAs(new Blob([s2ab(wbout)], {
+                type: "application/octet-stream"
+            }), '<%= details[0].coursename%>.xlsx');
+        });
+    </script>
+    <!-- <script type="text/javascript">
+        document.getElementById('export').onclick = function() {
+            var tableId = document.getElementById('StudentList').id;
+
+            Excel(tableId, filename = '');
+        }
+
+        function Excel(tableId, fileName = '') {
+            var downloadedFileName = 'excel_table_data';
+            var TableDataType = 'application/vnd.ms-excel';
+            var selectTable = document.getElementById(tableId);
+            var htmlTable = selectTable.outerHTML.replace(/ /g, '%20');
+
+            filename = filename ? filename + '.xls' : downloadedFileName + '.xls';
+            var downloadingURL = document.createElement("a");
+            document.body.appendChild(downloadingURL);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', htmlTable], {
+                    type: TableDataType
+                });
+                navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+
+                downloadingURL.href = 'data:' + TableDataType + ', ' + htmlTable;
+                downloadingURL.download = fileName;
+                downloadingURL.click();
+            }
+        }
+    </script> -->
 
 </body>
 

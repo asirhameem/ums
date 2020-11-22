@@ -128,17 +128,17 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(var content of contents){ %>
+                <% for(var i =0; i < contents.length; i++){ %>
                     <tr>
                         <td>
-                            <%= content.contentid%>
+                            <%= contents[i].contentid%>
                         </td>
                         <td>
-                            <%= content.contentname%>
+                            <%= contents[i].contentname%>
                         </td>
                         <td>
-                            <a href="">
-                                <%= content.contentpath%>
+                            <a href="../download/<%= fname[i]%>">Download
+
                             </a>
                         </td>
                     </tr>

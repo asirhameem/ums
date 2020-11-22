@@ -12,6 +12,9 @@ const course = require('./controllers/course');
 const content = require('./controllers/content');
 const notice = require('./controllers/notice');
 const logout = require('./controllers/logout');
+const search = require('./controllers/search');
+const download = require('./controllers/download');
+const student = require('./controllers/student');
 // const course = require('./controllers/course');
 
 const app = express();
@@ -39,6 +42,9 @@ app.use('/course', course);
 app.use('/upload', content);
 app.use('/notice', notice);
 app.use('/logout', logout);
+app.use('/search', search);
+app.use('/download', download);
+app.use('/student', student);
 // app.use('/user', user);
 
 //route
