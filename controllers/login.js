@@ -27,13 +27,9 @@ router.post('/', [
             loginModel.getByEmail(user, function(results) {
                 req.session.email = user.email;
                 req.session.userid = results[0].id;
-                //res.redirect('/home');
-                res.redirect('/profile');
-                //console.log(req.session.userid);
+                res.redirect('/home');
+
             })
-
-
-            // res.render('Home');
         } else {
 
             msg = "Unauthorized";

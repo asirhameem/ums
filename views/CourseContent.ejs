@@ -2,11 +2,17 @@
 
 <head>
     <title>Course Content</title>
+    <link href="../assets/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/Home/css/heroic-features.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
 <body>
-    <div id="PostNotice">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+    </nav>
+    <!---    <div id="PostNotice">
         <fieldset>
             <h2>Important Notice </h2>
 
@@ -28,35 +34,37 @@
             </table>
 
         </fieldset>
-    </div>
+    </div> -->
 
     <div id="fileUpload">
-        <form enctype="multipart/form-data">
-            <fieldset>
-                <h2>Upload Course Materials</h2>
+        <form enctype="multipart/form-data" method="POST">
+            <br>
+            <br>
+            <h2>Upload Course Materials</h2>
 
-                <table border="0">
+            <table class="table table-hover table-condensed">
 
 
-                    <tr>
-                        <td width="150px"><input type="text" id="fileName" placeholder="File Description"></td>
-                    </tr>
+                <tr>
+                    <td><input type="text" style="width: 100%;" id="fileName" placeholder="File Description" name="fileName" required></td>
+                </tr>
 
-                    <tr>
-                        <td width="150px"><input type="file" id="uploadfile"></td>
-                    </tr>
+                <tr>
+                    <td><input type="file" name="material" id="uploadfile" required></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" class="btn btn-success" value="Upload File" name="upload_btn" id="upload_btn"></td>
+                </tr>
 
-                </table>
-                <br>
-                <input type="button" value="Upload File" name="upload_btn" id="upload_btn" style="margin-left: 200px">
-                <div id="uploadmessage">
+            </table>
+            <br>
 
-                </div>
-            </fieldset>
+
+
         </form>
     </div>
 
-    <div id="videoUpload">
+    <!-- <div id="videoUpload">
         <form enctype="multipart/form-data">
             <fieldset>
                 <h2>Upload Course Video Materials</h2>
@@ -75,12 +83,13 @@
                 </table>
                 <br>
                 <input type="button" value="Upload Video" name="upload_btn" id="video_btn" style="margin-left: 200px">
-                <!-- <div id="uploadmessage"> -->
+                 <div id="uploadmessage"> 
 
     </div>
     </fieldset>
-    </form>
+    </form> 
     </div>
+    --->
 
 
     <!-- <table>
@@ -107,27 +116,49 @@
 
 
 
-    <div id="All Students">
-        <h1>Enrolled Student List</h1>
+    <div id="All Materials">
+        <h1>Uploaded Content List</h1>
 
-        <table id="StudentList" class="table table-hover table-condensed" border="1">
+        <table id="ContentList" class="table table-hover table-condensed" style="border-radius: 5px" border="1">
             <thead>
                 <tr>
-                    <th style="width:50%">Student Id</th>
-                    <th style="width:10%">Student Email</th>
-                    <th style="width:10%">Student Status</th>
+                    <th>Content Id</th>
+                    <th>Content Name</th>
+                    <th>Content Link</th>
                 </tr>
             </thead>
+            <tbody>
+                <% for(var content of contents){ %>
+                    <tr>
+                        <td>
+                            <%= content.contentid%>
+                        </td>
+                        <td>
+                            <%= content.contentname%>
+                        </td>
+                        <td>
+                            <a href="">
+                                <%= content.contentpath%>
+                            </a>
+                        </td>
+                    </tr>
+                    <%}%>
+            </tbody>
 
 
         </table>
 
     </div>
+    <script src="../assets/js/jquery-3.5.1.js"></script>
+    <script src="../assets/Home/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $("#navbar").load("../home/navbar");
+    </script>
 </body>
-<script src="js/jquery-3.5.1.js"></script>
-<script src="Home/vendor/jquery/jquery.min.js"></script>
-<script src="Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="notice.js"></script>
-<script src="File.js"></script>
+
+<!-- <script src="notice.js"></script>
+<script src="File.js"></script> -->
 
 </html>

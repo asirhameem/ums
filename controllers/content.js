@@ -1,5 +1,5 @@
 const express = require('express');
-const courseModel = require.main.require('./models/courseModel');
+const contentModel = require.main.require('./models/contentModel');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
@@ -7,55 +7,45 @@ var msg = "";
 
 router.get('/:id', (req, res) => {
     var course = {
-        courseid: req.params.id,
-        teacherid: req.session.userid
+        courseid: req.params.id
     };
 
-    courseModel.CourseDetails(course, function(results) {
-        var courseDetails = results;
-        courseModel.CourseStudents(course, function(result) {
-            var courseStudents = result;
-
-            res.render('CourseDetails', { details: courseDetails, students: courseStudents });
-        })
-
+    contentModel.ContentByCourse(course, function(results) {
+        res.render('CourseContent', { contents: results });
     })
 
     // res.render('Home');
 
 });
 
-// router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
 
-//     let fileName = req.files.dp;
-//     let uploadPath = 'assets/uploads/' + fileName.name;
-//     var user = {
+    let fileName = req.files.material;
+    let uploadPath = 'assets/uploads/contents/' + fileName.name;
+    var content = {
 
-//         name: req.body.name,
-//         password: req.body.password,
-//         dp: uploadPath,
-//         email: req.body.email
+        contentname: req.body.fileName,
+        contentpath: uploadPath,
+        courseid: req.params.id
+    };
+    console.log(uploadPath);
+    contentModel.UploadCourseContent(content, function(status) {
+        if (status) {
+            //console.log(fileName);
+            fileName.mv(uploadPath, (err) => {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+            });
+            res.redirect(req.get('referer'));
 
+        } else {
+            msg = "Can not Update";
+            res.redirect(req.get('referer'));
+        }
 
-//     };
-//     console.log(uploadPath);
-//     profileModel.UpdateInfo(user, function(status) {
-//         if (status) {
-//             //console.log(fileName);
-//             fileName.mv(uploadPath, (err) => {
-//                 if (err) {
-//                     return res.status(500).send(err);
-//                 }
-//             });
-//             res.redirect('/profile');
-
-//         } else {
-//             msg = "Can not Update";
-//             res.render('MyProfile', { msg: msg });
-//         }
-
-//     });
-// });
+    });
+});
 
 
 

@@ -53,15 +53,16 @@
                     <form class="form" action="" method="post" id="registrationForm" enctype="multipart/form-data">
 
                         <div class="text-center">
-                            <% if(user[0].dp == ""){ %>
+                            <!-- <% if(user[0].dp == ""){ %>
                                 <% var dp = "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" %>
                                     <% } else{ %>
                                         <% dp = user[0].dp %>
-                                            <% } %>
+                                            <% } %> -->
 
-                                                <img src="<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
-                                                <h6>Upload a photo...</h6>
-                                                <input type="file" name="dp" value="" class="text-center center-block file-upload">
+                            <img src="<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
+                            <h6>Upload a photo...</h6>
+                            <input type="hidden" name="altdp" value="<%= user[0].dp %>" class="text-center center-block file-upload">
+                            <input type="file" name="dp" class="text-center center-block file-upload">
                         </div>
 
 

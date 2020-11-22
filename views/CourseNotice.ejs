@@ -1,0 +1,168 @@
+<html>
+
+<head>
+    <title>Course Content</title>
+    <link href="../assets/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/Home/css/heroic-features.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+    </nav>
+
+    <div id="PostNotice">
+        <fieldset>
+            <h2>Important Notice </h2>
+            <form method="POST">
+
+                <table border="0">
+
+
+                    <tr>
+                        <td width="150px"><input type="text" name="noticename" id="noticename" placeholder="Notice Name"></td>
+                    </tr>
+                    <tr>
+                        <td width="150px"><input type="text" name="noticedescription" id="noticedescription" placeholder="Notice Description"></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Upload Notice</button>
+
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+
+        </fieldset>
+    </div>
+
+    <!-- <div id="fileUpload">
+        <form enctype="multipart/form-data" method="POST">
+            <br>
+            <br>
+            <h2>Upload Course Materials</h2>
+
+            <table class="table table-hover table-condensed">
+
+
+                <tr>
+                    <td><input type="text" style="width: 100%;" id="fileName" placeholder="File Description" name="fileName" required></td>
+                </tr>
+
+                <tr>
+                    <td><input type="file" name="material" id="uploadfile" required></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" class="btn btn-success" value="Upload File" name="upload_btn" id="upload_btn"></td>
+                </tr>
+
+            </table>
+            <br>
+
+
+
+        </form>
+    </div> -->
+
+    <!-- <div id="videoUpload">
+        <form enctype="multipart/form-data">
+            <fieldset>
+                <h2>Upload Course Video Materials</h2>
+
+                <table border="0">
+
+
+                    <tr>
+                        <td width="150px"><input type="text" id="videoName" placeholder="File Description"></td>
+                    </tr>
+
+                    <tr>
+                        <td width="150px"><input type="file" id="videoFile"></td>
+                    </tr>
+
+                </table>
+                <br>
+                <input type="button" value="Upload Video" name="upload_btn" id="video_btn" style="margin-left: 200px">
+                 <div id="uploadmessage"> 
+
+    </div>
+    </fieldset>
+    </form> 
+    </div>
+    --->
+
+
+    <!-- <table>
+            <tr>
+                <td>
+                    Post Notice
+                </td>
+
+            </tr>
+
+            <tr>
+                <input type="text" id="postDescription" placeholder="Post Notice Description Here">
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="button" id="btnNotice">Post</button>
+                        </td>
+                    </tr>
+                </table> -->
+
+
+
+
+
+
+    <div id="All Materials">
+        <h1>Uploaded Notice List</h1>
+
+        <table id="NoticeList" class="table table-hover table-condensed" style="border-radius: 5px" border="1">
+            <thead>
+                <tr>
+                    <th>Notice Id</th>
+                    <th>Notice Name</th>
+                    <th>Notice Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var notice of notices){ %>
+                    <tr>
+                        <td>
+                            <%= notice.noticeid %>
+                        </td>
+                        <td>
+                            <%= notice.noticename %>
+                        </td>
+                        <td>
+                            <%= notice.noticedescription%>
+                        </td>
+                    </tr>
+                    <%}%>
+            </tbody>
+
+
+        </table>
+
+    </div>
+    <script src="../assets/js/jquery-3.5.1.js"></script>
+    <script src="../assets/Home/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $("#navbar").load("../home/navbar");
+    </script>
+</body>
+
+<!-- <script src="notice.js"></script>
+<script src="File.js"></script> -->
+
+</html>
