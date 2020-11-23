@@ -8,15 +8,15 @@
     <title>Student Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="assets/myprofile/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/myprofile/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/myprofile/css/heroic-features.css" rel="stylesheet">
+    <link href="../assets/myprofile/css/heroic-features.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="assets/myprofile/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/myprofile/vendor/jquery/jquery.min.js"></script>
     <!-- <script src="myProfile.js"></script> -->
     <!-- ============================================================= -->
-    <link href="assets/toastr/js/toastr.min.css" rel="stylesheet">
+    <link href="../assets/toastr/js/toastr.min.css" rel="stylesheet">
 
     <!-- ========================= -->
     </script>
@@ -31,14 +31,16 @@
 
     <hr>
     <div class="container bootstrap snippet">
+
+
         <div class="row">
             <div class="col-sm-10">
-                <h1>User Profile Information</h1>
+                <h1>Student Information</h1>
             </div>
 
         </div>
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
 
                 </hr><br>
 
@@ -47,23 +49,18 @@
 
                 <div class="" id="messages">
 
-                    <h2></h2>
 
                     <hr>
-                    <form class="form" action="" method="post" id="registrationForm" enctype="multipart/form-data">
-
-                        <div class="text-center">
-                            <!-- <% if(user[0].dp == ""){ %>
-                                <% var dp = "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" %>
-                                    <% } else{ %>
-                                        <% dp = user[0].dp %>
-                                            <% } %> -->
-
-                            <img src="<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
-
-                        </div>
 
 
+                    <div class="text-center">
+
+
+                        <img src="../<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
+
+                    </div>
+
+                    <form method="POST" action="../student/<%=user[0].email%>">
 
                         <div class="form-group">
 
@@ -71,7 +68,7 @@
                                 <label for="first_name">
                                     <h4>Name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="name" id="name" value="<%=user[0].name%>">
+                                <input type="text" class="form-control" name="name" id="name" value="<%=user[0].name%>" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,7 +82,7 @@
                                     <label for="status">
                                         <h4>Status</h4>
                                     </label>
-                                    <input type="text" class="form-control" name="status" id="status" value="<%=user[0].status%>" readonly>
+                                    <input type="text" class="form-control" name="status" id="status" value="<%=user[0].status%>">
                                 </div>
                             </div>
 
@@ -102,15 +99,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
 
-                                <div class="col-xs-6">
-                                    <label for="type">
-                                        <h4>Department</h4>
-                                    </label>
-                                    <input type="text" class="form-control" id="type" value="<%=user[0].department%>" readonly>
-                                </div>
-                            </div>
+                            <!-- ====================== -->
+
+
+
 
                             <div class="form-group">
 
@@ -123,16 +116,130 @@
                                 </div>
                             </div>
 
-                            <script src="assets/myprofile/vendor/jquery/jquery.min.js"></script>
-                            <script src="assets/myprofile/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-                            <!-- <script type="text/javascript" src="Navbar.js"></script> -->
-
-                        </div>
                     </form>
+
+                    </div>
+
                 </div>
             </div>
+
+            <div class="col-sm-4">
+
+                </hr><br>
+
+
+
+
+                <div class="" id="messages">
+
+
+                    <hr>
+
+
+
+
+
+                    <div class="form-group">
+
+
+
+
+
+
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="heading">
+                                    <h4>Show Library Information</h4>
+                                </label>
+                                <!-- <p id="books"></p> -->
+                                <table id="books">
+                                    <tr>
+                                        <th>Book Name</th>
+                                        <th>Borrow Date</th>
+                                        <th>Return Date</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!-- ====================== -->
+
+
+
+
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="button" id="btnLibrary"><i class="glyphicon glyphicon-ok-sign"></i> Library</button>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="form-group">
+
+
+
+
+
+
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="heading">
+                                    <h4>Show Account Information</h4>
+                                </label>
+                                <!-- <p id="books"></p> -->
+                                <table id="payment">
+                                    <tr>
+                                        <th>Account Name</th>
+                                        <th>Student Info</th>
+                                        <th>Last Payment</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!-- ====================== -->
+
+
+
+
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="button" id="btnAccount"><i class="glyphicon glyphicon-ok-sign"></i>Account</button>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+
 
         <!-- <script src="assets/toastr/js/toastr.min.js"></script>
         <script>
@@ -160,6 +267,56 @@
                 }
             })
         </script> -->
+        <script src="../assets/myprofile/vendor/jquery/jquery.min.js"></script>
+        <script src="../assets/myprofile/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $("#navbar").load("../home/navbar");
+        </script>
+
+        <!-- <script type="text/javascript" src="Navbar.js"></script> -->
+        <script>
+            $('#btnLibrary').on('click', function() {
+                $.ajax({
+                    url: '/library/<%=user[0].email%>',
+                    method: 'get',
+                    dataType: 'json',
+                    success: function(data) {
+                        var msg = "";
+                        for (var i = 0; i < data.length; i++) {
+                            //var msg = data[i].n_details + "  - " + data[i].posted_by;
+                            msg = msg + "<tr> <td> '" + data[i].bookname + "' </td> <td> '" + data[i].bdate + "' </td> <td> '" + data[i].rdate + "' </td> </tr>";
+                        }
+                        $('#books').append(msg);
+
+                    },
+                    error: function(response) {
+                        alert('server error occured')
+                    }
+                });
+            })
+        </script>
+
+        <script>
+            $('#btnAccount').on('click', function() {
+                $.ajax({
+                    url: '/account/<%=user[0].email%>',
+                    method: 'get',
+                    dataType: 'json',
+                    success: function(data) {
+                        var msg = "";
+                        for (var i = 0; i < data.length; i++) {
+                            //var msg = data[i].n_details + "  - " + data[i].posted_by;
+                            msg = msg + "<tr> <td> '" + data[i].aname + "' </td> <td> '" + data[i].studentinfo + "' </td> <td> '" + data[i].lastpayment + "' </td> </tr>";
+                        }
+                        $('#payment').append(msg);
+
+                    },
+                    error: function(response) {
+                        alert('server error occured')
+                    }
+                });
+            })
+        </script>
 </body>
 
 </html>

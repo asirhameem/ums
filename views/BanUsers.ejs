@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Course Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../assets/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/Home/css/heroic-features.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Playfair+Display:,300, 400, 700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/CourseDetails/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/CourseDetails/css/animate.css">
+    <link rel="stylesheet" href="../assets/CourseDetails/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+    <link rel="stylesheet" href="../assets/CourseDetails/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/CourseDetails/fonts/fontawesome/css/font-awesome.min.css">
+
+
+    <!-- Theme Style -->
+    <!-- <link rel="stylesheet" href="CourseDetails/css/style.css"> -->
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    </nav>
+    <!-- <div class="site-wrap">
+        <h1 class="p-4">Course Details</h1>
+        <main id="course">
+
+        </main>
+    </div> -->
+
+
+    <h1>Banned Student List</h1>
+
+
+    <table id="StudentList" class="table table-hover table-condensed" border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Grade</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var student of students) { %>
+                <tr>
+                    <td>
+                        <%=student.id%>
+                    </td>
+                    <td>
+                        <%=student.studentemail%>
+                    </td>
+                    <td>
+                        <%=student.grade%>
+                    </td>
+                    <td>
+                        <%=student.status%>
+                    </td>
+                    <td>
+                        <a href="/ban/<%=student.id%>">Unban</a>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+
+
+    </table>
+
+
+
+    <!-- <div id="addToCart">
+            <button id="addToCart" class="btn btn-warning">Add To Cart</button>
+        </div> -->
+    </div>
+    <!-- loader -->
+    <!-- <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div> -->
+
+    <script src="../assets/CourseDetails/js/jquery-3.2.1.min.js"></script>
+    <script src="../assets/CourseDetails/js/popper.min.js"></script>
+    <script src="../assets/CourseDetails/js/bootstrap.min.js"></script>
+    <script src="../assets/CourseDetails/js/owl.carousel.min.js"></script>
+    <script src="../assets/CourseDetails/js/jquery.waypoints.min.js"></script>
+    <script src="../assets/CourseDetails/js/jquery.countdown.min.js"></script>
+    <script src="../assets/CourseDetails/js/main.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <!-- <script type="text/javascript" src="../node_modules/xlsx/dist/xlsx.min.js"></script> -->
+
+    <!-- <script src="../assets/CourseDetails.js"></script> -->
+    <script>
+        $("#navbar").load("../home/navbar");
+    </script>
+
+    <!-- <script type="text/javascript">
+        document.getElementById('export').onclick = function() {
+            var tableId = document.getElementById('StudentList').id;
+
+            Excel(tableId, filename = '');
+        }
+
+        function Excel(tableId, fileName = '') {
+            var downloadedFileName = 'excel_table_data';
+            var TableDataType = 'application/vnd.ms-excel';
+            var selectTable = document.getElementById(tableId);
+            var htmlTable = selectTable.outerHTML.replace(/ /g, '%20');
+
+            filename = filename ? filename + '.xls' : downloadedFileName + '.xls';
+            var downloadingURL = document.createElement("a");
+            document.body.appendChild(downloadingURL);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', htmlTable], {
+                    type: TableDataType
+                });
+                navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+
+                downloadingURL.href = 'data:' + TableDataType + ', ' + htmlTable;
+                downloadingURL.download = fileName;
+                downloadingURL.click();
+            }
+        }
+    </script> -->
+
+</body>
+
+</html>

@@ -17,7 +17,14 @@ router.get('/', (req, res) => {
 
 router.post('/', [
     check('name', 'Invalid Name').exists().isLength({ min: 3 }),
-    check('password', 'Invalid Password').exists().isLength({ min: 3 })
+    check('password', 'Invalid Password').exists().isLength({ min: 3 }),
+    check('dp', 'Invalid Profile Pic').custom((val, { req }) => {
+        if (req.files.dp.mimetype === 'image/jpeg') {
+            return true;
+        } else {
+            return false;
+        }
+    })
 ], (req, res) => {
 
     var errors = validationResult(req);

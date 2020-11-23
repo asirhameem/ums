@@ -14,7 +14,10 @@ const notice = require('./controllers/notice');
 const logout = require('./controllers/logout');
 const search = require('./controllers/search');
 const download = require('./controllers/download');
+const library = require('./controllers/library');
 const student = require('./controllers/student');
+const account = require('./controllers/account');
+const ban = require('./controllers/ban');
 // const course = require('./controllers/course');
 
 const app = express();
@@ -45,7 +48,9 @@ app.use('/logout', logout);
 app.use('/search', search);
 app.use('/download', download);
 app.use('/student', student);
-// app.use('/user', user);
+app.use('/library', library);
+app.use('/account', account);
+app.use('/ban', ban);
 
 //route
 app.get('/', (req, res) => {
