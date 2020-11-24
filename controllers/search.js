@@ -8,7 +8,7 @@ router.get('/:str', (req, res) => {
 
 
     searchModel.SearchStudent(function(results) {
-        const result = results.filter(user => user.id == req.params.str ||
+        const result = results.filter(user => user.uid == req.params.str ||
             user.name.toLowerCase() == req.params.str.toLowerCase() || user.email == req.params.str);
         console.log(result);
         res.render('Search', { contents: result });
@@ -18,6 +18,11 @@ router.get('/:str', (req, res) => {
 
 });
 
+
+router.get('/', (req, res) => {
+    res.render('Search', { contents: "" });
+
+});
 
 
 

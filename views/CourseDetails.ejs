@@ -52,17 +52,17 @@
                 <tr>
                     <tr>
                         <td>Course Id:</td>
-                        <td id="courseId"><input style="width: 50%;" type="text" id="courseId" name="" value="<%= details[0].courseid%>" readonly></td>
+                        <td id="courseId"><input style="width: 50%;" type="text" id="courseId" name="" value="<%= details[0].cid%>" readonly></td>
                     </tr>
                 </tr>
                 <tr>
                     <td>Course Name:</td>
-                    <td id="courseName"><input style="width: 50%;" type="text" id="courseName" name="" value="<%= details[0].coursename%>" readonly></td>
+                    <td id="courseName"><input style="width: 50%;" type="text" id="courseName" name="" value="<%= details[0].cname%>" readonly></td>
                 </tr>
 
                 <tr>
                     <td>Instructor Id:</td>
-                    <td id="instructorId"><input style="width: 50%;" type="text" id="instructorId" name="" value="<%= details[0].courseteacher%>" readonly></td>
+                    <td id="instructorId"><input style="width: 50%;" type="text" id="instructorId" name="" value="<%= details[0].cteacher%>" readonly></td>
                 </tr>
                 <!-- 
                 <tr>
@@ -72,13 +72,23 @@
 
                 <tr>
                     <td>Course Description:</td>
-                    <td id="courseDescription"><input type="text" style="width: 50%;" id="courseDescription" name="" value="<%= details[0].coursedescription%>" readonly></td>
+                    <td id="courseDescription"><input type="text" style="width: 50%;" id="courseDescription" name="" value="<%= details[0].cdescription%>" readonly></td>
 
                 </tr>
 
                 <tr>
                     <td>Course Price:</td>
-                    <td id="coursePrice"><input type="text" id="coursePrice" name="" value="<%= details[0].coursecost%>" style="width: 50%;" readonly></td>
+                    <td id="coursePrice"><input type="text" id="coursePrice" name="" value="<%= details[0].ccost%>" style="width: 50%;" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Course Start Time:</td>
+                    <td id="coursePrice"><input type="text" id="coursePrice" name="" value="<%= details[0].cstart%>" style="width: 50%;" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Course End Time:</td>
+                    <td id="coursePrice"><input type="text" id="coursePrice" name="" value="<%= details[0].cend%>" style="width: 50%;" readonly></td>
                 </tr>
                 <!-- <tr>
                     <td>Course Status:</td>
@@ -95,6 +105,8 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <!-- <th>Picture</th> -->
+                    <th>Name</th>
                     <th>Email</th>
                     <th>Grade</th>
                     <th>Status</th>
@@ -104,10 +116,16 @@
                 <% for(var student of students) { %>
                     <tr>
                         <td>
-                            <%=student.id%>
+                            <%=student.uid%>
+                        </td>
+                        <!-- <td>
+                            <img src="<%=student.dp%>" alt="">
+                        </td> -->
+                        <td>
+                            <%=student.name%>
                         </td>
                         <td>
-                            <%=student.studentemail%>
+                            <%=student.email%>
                         </td>
                         <td>
                             <%=student.grade%>
@@ -166,7 +184,7 @@
         $("#export").click(function() {
             saveAs(new Blob([s2ab(wbout)], {
                 type: "application/octet-stream"
-            }), '<%= details[0].coursename%>.xlsx');
+            }), '<%= details[0].cname%>.xlsx');
         });
     </script>
     <!-- <script type="text/javascript">

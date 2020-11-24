@@ -3,7 +3,7 @@ const db = require('./db');
 module.exports = {
 
     AccountRecordByUser: function(user, callback) {
-            var sql = "select * from account where studentinfo = '" + user.credential + "'";
+            var sql = "select * from payment where semail = '" + user.credential + "'";
 
             db.getResults(sql, function(results) {
                 callback(results);
