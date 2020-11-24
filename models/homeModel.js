@@ -3,7 +3,8 @@ const db = require('./db');
 module.exports = {
 
     LoadSubjects: function(user, callback) {
-            var sql = "select * from course where courseteacher = '" + user.userid + "'";
+            console.log(user);
+            var sql = "select * from course where cteacher = '" + user.userid + "'";
 
             db.getResults(sql, function(results) {
                 callback(results);

@@ -37,7 +37,7 @@ app.use(fileUpload({
 }));
 
 
-app.use('/registration', registration);
+app.use('/registrationteacher', registration);
 app.use('/login', login);
 app.use('/profile', profile);
 app.use('/home', homepage);

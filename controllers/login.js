@@ -27,9 +27,28 @@ router.post('/', [
         loginModel.validate(user, function(status) {
             if (status) {
                 loginModel.getByEmail(user, function(results) {
-                    req.session.email = user.email;
-                    req.session.userid = results[0].id;
-                    res.redirect('/home');
+                    if (results[0].type == "Student") {
+                        req.session.email = user.email;
+                        req.session.userid = results[0].uid;
+                        req.session.username = results[0].username;
+                        res.redirect('/studenthome');
+                    } else if (results[0].type == "Teacher") {
+                        req.session.email = user.email;
+                        req.session.userid = results[0].uid;
+                        req.session.username = results[0].username;
+                        console.log(results[0]);
+                        res.redirect('/home');
+                    } else if (results[0].type == "Admin") {
+                        req.session.email = user.email;
+                        req.session.userid = results[0].id;
+                        req.session.username = results[0].username;
+                        res.redirect('/adminhome');
+                    } else if (results[0].type == "Employee") {
+                        req.session.email = user.email;
+                        req.session.userid = results[0].id;
+                        req.session.username = results[0].username;
+                        res.redirect('/employeehome');
+                    }
 
                 })
             } else {

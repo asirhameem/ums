@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
         userid: req.session.userid
     };
     homeModel.LoadSubjects(user, function(results) {
+        console.log(results);
         res.render('Home', { subjects: results });
     })
 
