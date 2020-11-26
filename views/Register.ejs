@@ -30,7 +30,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="small mb-1" for="inputFirstName">Name</label>
-                                                    <input class="form-control py-4 w-full" id="inputFirstName" type="text" placeholder="Enter your full Name" name="name" />
+                                                    <input class="form-control py-4 w-full" id="inputName" type="text" placeholder="Enter your full Name" name="name" />
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-6">
@@ -43,12 +43,12 @@
 
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Username</label>
-                                            <input class="form-control py-4" id="username" type="username" aria-describedby="userHelp" placeholder="Enter username" name="username" />
+                                            <input class="form-control py-4" id="userName" type="username" aria-describedby="userHelp" placeholder="Enter username" name="username" />
                                         </div>
 
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" />
+                                            <input class="form-control py-4" id="inputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" />
                                         </div>
                                         <div class="form-group">
                                             <small>You'll need to confirm this email belongs to You.</small>
@@ -67,7 +67,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="msg"></div>
+                                        <div><small id="msg" style="color:red"></small></div>
                                         <div class="form-group mt-4 mb-0"><input type="submit" name="submit" class="btn btn-primary btn-block"></input>
                                         </div>
                                     </form>
@@ -119,12 +119,74 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-            let msg = '<%= msg %>';
-            if (msg != "") {
-                toastr["error"](msg);
-            }
+
+
+
         })
     </script>
+
+    <% if(msg != ""){%>
+        <% if(typeof msg != 'undefined') { %>
+            <% msg.forEach(function(error) { %>
+                <script>
+                    toastr["error"]("<%= error.msg %>");
+                </script>
+
+
+                <% }) %>
+                    <% } %>
+
+                        <% } %>
+
+
+
+                            <script>
+                                $(document).ready(function() {
+                                    $("#inputName").keyup(function() {
+                                            var Name = $("#inputName").val();
+                                            if (Name.length < 3) {
+                                                $("#msg").html("Please provide valid name");
+                                            } else {
+                                                $("#msg").html("");
+                                            }
+                                        }
+
+                                    );
+
+                                    $("#userName").keyup(function() {
+                                            var Name = $("#userName").val();
+                                            if (Name.length < 3) {
+                                                $("#msg").html("Please provide valid name");
+                                            } else {
+                                                $("#msg").html("");
+                                            }
+                                        }
+
+                                    );
+
+                                    $("#inputPassword").keyup(function() {
+                                            var pass = $("#inputPassword").val();
+                                            if (pass.length < 3) {
+                                                $("#msg").html("Please provide atleast 3 character");
+                                            } else {
+                                                $("#msg").html("");
+                                            }
+                                        }
+
+                                    );
+
+                                    $("#inputEmail").keyup(function() {
+                                            var email = $("#inputEmail").val();
+                                            if (email.indexOf("@") == -1 || email.lastIndexOf(".") == -1) {
+                                                $("#msg").html("Please provide valid email");
+                                            } else {
+                                                $("#msg").html("");
+                                            }
+                                        }
+
+                                    );
+                                });
+                            </script>
 
 </body>
 

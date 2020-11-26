@@ -62,7 +62,7 @@
                             <img src="<%= user[0].dp %>" class="avatar img-circle img-thumbnail">
                             <h6>Upload a photo...</h6>
                             <input type="hidden" name="altdp" value="<%= user[0].dp %>" class="text-center center-block file-upload">
-                            <input type="file" name="dp" class="text-center center-block file-upload">
+                            <input type="file" id="dp" name="dp" class="text-center center-block file-upload">
                         </div>
 
 
@@ -215,7 +215,7 @@
             </div>
         </div>
 
-        <!-- <script src="assets/toastr/js/toastr.min.js"></script>
+        <script src="assets/toastr/js/toastr.min.js"></script>
         <script>
             $(document).ready(function() {
                 toastr.options = {
@@ -235,12 +235,19 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-                let msg = req.params.msg;
-                if (msg != "") {
-                    toastr["error"](msg);
-                }
+
+                $('#btnSave').on('click', function() {
+                    let fname = document.getElementById("dp").files.length;
+                    if (fname == 0) {
+                        toastr["error"]("You haven't chosen any pic")
+                    }
+
+                })
+
             })
-        </script> -->
+        </script>
+        <script>
+        </script>
 </body>
 
 </html>

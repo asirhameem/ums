@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
         var courseDetails = results;
         var courseInfo = {
             courseid: results[0].cid,
-            teacherid: results[0].cteacher
+            teacherid: req.session.userid //results[0].cteacher
         };
         console.log(courseDetails);
         courseModel.CourseStudents(courseInfo, function(result) {

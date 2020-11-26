@@ -10,6 +10,7 @@ router.get('/:id', (req, res) => {
 
 
     noticeModel.NoticeByCourse(req.params.id, function(results) {
+        const noticeList = results;
         res.render('CourseNotice', { notices: results });
     })
 
@@ -29,6 +30,7 @@ router.post('/:id', [
         console.log(errors);
         res.redirect(req.get('referer'));
 
+
     } else {
         var notice = {
             name: req.body.noticename,
@@ -44,6 +46,24 @@ router.post('/:id', [
             }
         })
     }
+});
+
+router.get('/:cid/:nid', (req, res) => {
+
+    var notice = {
+        nid: req.params.nid,
+        cid: req.params.cid
+    };
+
+    noticeModel.DeleteNoticeByCourse(notice, function(results) {
+        console.log(notice);
+        res.redirect(req.get('referer'));
+
+
+    })
+
+    // res.render('Home');
+
 });
 
 

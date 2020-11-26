@@ -38,7 +38,7 @@ router.post('/', [
         var user = {
 
             name: req.body.name,
-            password: req.body.password,
+            password: Buffer.from(req.body.password).toString('base64'), //req.body.password,
             dp: uploadPath,
             email: req.body.email
 
