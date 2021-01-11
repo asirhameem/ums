@@ -11,7 +11,7 @@ router.get('/:str', (req, res) => {
     };
 
     accountModel.AccountRecordByUser(user, function(results) {
-        res.send(JSON.stringify(results));
+        res.send(results);
     })
 });
 

@@ -6,7 +6,8 @@ function getConnection(callback) {
         host: '127.0.0.1',
         user: 'root',
         password: '',
-        database: 'universitymanagementsystem'
+        //database: 'universitymanagementsystem'
+        database: 'university'
     });
 
     connection.connect(function(err) {
