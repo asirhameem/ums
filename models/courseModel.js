@@ -10,7 +10,7 @@ module.exports = {
         });
     },
     CourseStudents: function(course, callback) {
-        var sql = "SELECT * FROM enroll,user WHERE enroll.sid = user.uid and user.type = 'Student' and enroll.courseid = '" + course.courseid + "' and enroll.instructorid = '" + course.instructorid + "'";
+        var sql = "SELECT * FROM enroll,user WHERE enroll.sid = user.uid and user.type = 'Student' and user.status = 'Active' and enroll.courseid = '" + course.courseid + "' and enroll.instructorid = '" + course.teacherid + "'";
 
         db.getResults(sql, function(results) {
             callback(results);

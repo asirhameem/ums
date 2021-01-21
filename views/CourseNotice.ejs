@@ -5,6 +5,7 @@
     <link href="../assets/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/Home/css/heroic-features.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/toastr/js/toastr.min.css" rel="stylesheet">
 </head>
 
 
@@ -15,17 +16,17 @@
 
     <div id="PostNotice">
         <fieldset>
-            <h2>Important Notice </h2>
+            <h2 style="text-align: center;">Important Notice </h2>
             <form method="POST">
 
-                <table border="0">
+                <!-- <table border="0">
 
 
                     <tr>
-                        <td width="150px"><input type="text" name="noticename" id="noticename" placeholder="Notice Name"></td>
+                        <td><input width="100%" type="text" name="noticename" id="noticename" placeholder="Notice Name"></td>
                     </tr>
                     <tr>
-                        <td width="150px"><input type="text" name="noticedescription" id="noticedescription" placeholder="Notice Description"></td>
+                        <td><input width="100%" type="text" name="noticedescription" id="noticedescription" placeholder="Notice Description"></td>
                     </tr>
 
                     <tr>
@@ -36,7 +37,21 @@
                         </td>
                     </tr>
 
-                </table>
+                </table> -->
+
+
+                <div class="form-group">
+                    <!-- <label for="noticeName">Notice Name</label> -->
+                    <input type="text" class="form-control" id="noticeName" name="noticename" aria-describedby="" placeholder="Enter notice title here">
+
+                </div>
+                <div class="form-group">
+                    <!-- <label for="noticeDesc">Notice Description</label> -->
+                    <input type="text" class="form-control" id="noticeDesc" name="noticedescription" placeholder="Enter notice description here">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
             </form>
 
         </fieldset>
@@ -125,7 +140,7 @@
     <div id="All Materials">
         <h1>Uploaded Notice List</h1>
 
-        <table id="NoticeList" class="table table-hover table-condensed" style="border-radius: 5px" border="1">
+        <!-- <table id="NoticeList" class="table table-hover table-condensed" style="border-radius: 5px" border="1">
             <thead>
                 <tr>
                     <th>Notice Id</th>
@@ -150,8 +165,22 @@
             </tbody>
 
 
-        </table>
-
+        </table> -->
+        <%for(var notice of notices){ %>
+            <div class="card">
+                <div class="card-header">
+                    <%= notice.noticename %>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>
+                            <%= notice.noticedescription%>
+                        </p>
+                        <footer class="footer"><a href="/notice/<%= notice.cid%>/<%= notice.nid%>" class="btn btn-primary">Delete</a></footer>
+                    </blockquote>
+                </div>
+            </div>
+            <%}%>
     </div>
     <script src="../assets/js/jquery-3.5.1.js"></script>
     <script src="../assets/Home/vendor/jquery/jquery.min.js"></script>
@@ -160,6 +189,34 @@
     <script>
         $("#navbar").load("../home/navbar");
     </script>
+
+    <script src="assets/toastr/js/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+
+
+        })
+    </script>
+
+
 </body>
 
 <!-- <script src="notice.js"></script>

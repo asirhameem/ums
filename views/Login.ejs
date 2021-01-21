@@ -53,13 +53,22 @@
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <h5 id="errorText"></h5>
+                        <!-- <h5 id="errorText"></h5> -->
+                        <small id="msg" style="color: red;"></small>
+
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
                         <button class="login100-form-btn" type="submit" id="btnLogin">
                             Login
                         </button>
+
+
+                    </div>
+                    <div style="margin-left:15%;">
+                        <a href="/registrationteacher">
+                            <p>Don't have an account? Signup Here</p>
+                        </a>
                     </div>
 
                 </form>
@@ -113,6 +122,32 @@
                 toastr["error"](msg);
             }
         })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#email").keyup(function() {
+                    var email = $("#email").val();
+                    if (email.length < 11) {
+                        $("#msg").html("Please provide valid email");
+                    } else {
+                        $("#msg").html("");
+                    }
+                }
+
+            );
+
+            $("#password").keyup(function() {
+                    var password = $("#password").val();
+                    if (password.length < 3) {
+                        $("#msg").html("Please provide valid password");
+                    } else {
+                        $("#msg").html("");
+                    }
+                }
+
+            );
+        });
     </script>
 
 

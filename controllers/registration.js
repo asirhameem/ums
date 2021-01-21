@@ -27,20 +27,22 @@ router.post('/', [
     if (!errors.isEmpty()) {
         console.log("Invalid Registration");
         console.log(errors);
-        res.redirect(req.get('referer'));
+        // res.redirect(req.get('referer'));
+        var errList = errors.array();
+        res.render('Register', { msg: errList })
     } else {
         var teacher = {
             username: req.body.username,
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
+            password: Buffer.from(req.body.password).toString('base64'), // req.body.password,
             type: "Teacher",
             dp: "",
             status: "Inactive",
-            department: "",
-            designation: "",
-            salary: 0,
-            joindate: ""
+            // department: "",
+            // designation: "",
+            // salary: 0,
+            // joindate: ""
 
         };
         registrationModel.insert(teacher, function(status) {

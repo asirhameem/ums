@@ -20,7 +20,7 @@ router.post('/', [
 
         var user = {
             email: req.body.email,
-            password: req.body.password
+            password: Buffer.from(req.body.password).toString('base64') // req.body.password 
         };
 
 

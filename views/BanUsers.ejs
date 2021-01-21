@@ -43,8 +43,13 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Name</th>
                 <th>Email</th>
+                <th>Department</th>
+                <th>Type</th>
                 <th>Grade</th>
+                <th>DOB</th>
+                <th>Admission Date</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -53,19 +58,35 @@
             <% for(var student of students) { %>
                 <tr>
                     <td>
-                        <%=student.id%>
+                        <%=student.uid%>
                     </td>
                     <td>
-                        <%=student.studentemail%>
+                        <%=student.name%>
                     </td>
                     <td>
-                        <%=student.grade%>
+                        <%=student.email%>
+                    </td>
+                    <td>
+                        <%=student.department%>
+                    </td>
+                    <td>
+                        <%=student.student_status%>
+                    </td>
+                    <td>
+                        <%=student.cgpa%>
+                    </td>
+                    <td>
+                        <%=student.dob%>
+                    </td>
+                    <td>
+                        <%=student.admission_date%>
                     </td>
                     <td>
                         <%=student.status%>
                     </td>
+
                     <td>
-                        <a href="/ban/<%=student.id%>">Unban</a>
+                        <a class="btn btn-danger" href="/ban/<%=student.uid%>">Unban</a>
                     </td>
                 </tr>
                 <% } %>

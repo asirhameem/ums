@@ -40,10 +40,10 @@
 
         <div class="row">
             <% for (var sub of subjects){ %>
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
 
                     <div class="card" style="width: 18rem; height: fixed;">
-                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                        <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= sub.cname %>
@@ -57,7 +57,26 @@
                         </div>
                     </div>
 
+                </div> -->
+
+                <div class="card">
+                    <div class="card-header">
+                        <%=sub.cstart%> -
+                            <%=sub.cend%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= sub.cname %>
+                        </h5>
+                        <p class="card-text">
+                            <%= sub.cdescription %>
+                        </p>
+                        <a href="course/<%=sub.cid%>" class="btn btn-primary">Course Details</a>
+                        <a href="upload/<%=sub.cid%>" class="btn btn-primary">Upload</a>
+                        <a href="notice/<%=sub.cid%>" class="btn btn-primary">Notice</a>
+                    </div>
                 </div>
+
                 <% } %>
         </div>
 

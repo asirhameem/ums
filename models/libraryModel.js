@@ -3,7 +3,7 @@ const db = require('./db');
 module.exports = {
 
     LibraryRecordByUser: function(user, callback) {
-            var sql = "select * from borrow where studentinfo = '" + user.credential + "'";
+            var sql = "select * from borrow where semail = '" + user.credential + "'";
 
             db.getResults(sql, function(results) {
                 callback(results);

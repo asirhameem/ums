@@ -156,7 +156,7 @@
                                     <h4>Show Library Information</h4>
                                 </label>
                                 <!-- <p id="books"></p> -->
-                                <table id="books">
+                                <table id="books" class="table table-hover table-condensed" border="1">
                                     <tr>
                                         <th>Book Name</th>
                                         <th>Borrow Date</th>
@@ -204,7 +204,7 @@
                                     <h4>Show Account Information</h4>
                                 </label>
                                 <!-- <p id="books"></p> -->
-                                <table id="payment">
+                                <table id="payment" class="table table-hover table-condensed" border="1">
                                     <tr>
                                         <th>Account Name</th>
                                         <th>Student Info</th>
@@ -306,7 +306,7 @@
                         var msg = "";
                         for (var i = 0; i < data.length; i++) {
                             //var msg = data[i].n_details + "  - " + data[i].posted_by;
-                            msg = msg + "<tr> <td> '" + data[i].aname + "' </td> <td> '" + data[i].studentinfo + "' </td> <td> '" + data[i].lastpayment + "' </td> </tr>";
+                            msg = msg + "<tr> <td> " + data[i].pid + " </td> <td> " + data[i].pamount + " </td> <td> " + data[i].pdate + " </td> </tr>";
                         }
                         $('#payment').append(msg);
 

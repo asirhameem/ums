@@ -3,14 +3,20 @@ const db = require('./db');
 module.exports = {
 
     NoticeByCourse: function(id, callback) {
-        var sql = "select * from notice where courseid = '" + id + "'";
+        var sql = "select * from notice where cid = '" + id + "'";
 
         db.getResults(sql, function(results) {
             callback(results);
         });
     },
     UploadCourseNotice: function(notice, callback) {
-            var sql = "insert into notice values('','" + notice.name + "', '" + notice.description + "','" + notice.id + "')";
+        var sql = "insert into notice values('','" + notice.id + "','" + notice.name + "', '" + notice.description + "')";
+        db.execute(sql, function(status) {
+            callback(status);
+        });
+    },
+    DeleteNoticeByCourse: function(notice, callback) {
+            var sql = "delete from notice where nid = '" + notice.nid + "' and cid = '" + notice.cid + "'";
             db.execute(sql, function(status) {
                 callback(status);
             });
